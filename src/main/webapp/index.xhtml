@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Compatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Home - Sistema de Cadastro de Clientes</title>
+    <style type="text/css">
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .btn-custom {
+            display: inline-block;
+            width: 200px;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h2>Bem-vindo ao Sistema de Cadastro de Clientes</h2>
+        <p>Escolha uma das opções abaixo para gerenciar seus clientes:</p>
+        
+        <h:link value="Ver Lista de Clientes" outcome="listarClientes.xhtml" styleClass="btn-custom" />
+        <h:link value="Cadastrar Novo Cliente" outcome="cadastroCliente.xhtml" styleClass="btn-custom" />
+    </div>
+</h:body>
+</html>

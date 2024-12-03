@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Compatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<title>Cadastro de Cliente</title>
+	<style type="text/css">
+body {
+	background-color: #f4f6f9;
+	font-family: Arial, sans-serif;
+}
+
+.container-custom {
+	width: 50%;
+	margin: auto;
+	padding: 30px 0;
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+}
+
+.header-title {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	font-weight: bold;
+}
+
+.btn-container {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.btn-custom {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+	background-color: #0056b3;
+}
+
+.btn-link-custom {
+	font-size: 16px;
+	color: #007bff;
+	text-decoration: none;
+}
+
+.btn-link-custom:hover {
+	text-decoration: underline;
+}
+</style>
+</h:head>
+
+<h:body>
+	<div class="container-custom">
+		<h2 class="header-title">Cadastro de Cliente</h2>
+		<h:messages globalOnly="true" />
+
+		<h:form id="clienteForm">
+			<!-- Hidden field for ID, required for edit mode -->
+			<h:inputHidden id="cliente-id" value="#{clienteBean.cliente.id}" />
+
+			<!-- Dados do Cliente -->
+			<h3>Informações do Cliente</h3>
+			<div class="form-group">
+				<label for="nome">Nome *</label>
+				<h:inputText id="nome" value="#{clienteBean.cliente.nome}"
+					required="true" requiredMessage="O nome é obrigatório."
+					class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label for="email">E-mail *</label>
+				<h:inputText id="email" value="#{clienteBean.cliente.email}"
+					required="true" requiredMessage="O e-mail é obrigatório."
+					validatorMessage="E-mail inválido." class="form-control">
+					<f:validateRegex pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" />
+				</h:inputText>
+			</div>
+
+			<div class="form-group">
+				<label for="telefone">Telefone</label>
+				<h:inputText id="telefone" value="#{clienteBean.cliente.telefone}"
+					class="form-control" />
+			</div>
+
+			<!-- Endereço do Cliente -->
+			<h3>Endereço</h3>
+			<div class="form-group">
+				<label for="cep">CEP *</label>
+				<h:inputText id="cep" value="#{clienteBean.endereco.cep}"
+					required="true" requiredMessage="O CEP é obrigatório."
+					class="form-control" maxlength="9" />
+
+				<!-- Botão para disparar a busca pelo CEP -->
+				<h:commandButton value="Buscar Endereço"
+					action="#{clienteBean.buscarEnderecoPorCep}"
+					styleClass="btn btn-primary" update="endereco bairro cidade estado" />
+			</div>
+
+			<div class="form-group">
+				<label for="endereco">Endereço *</label>
+				<h:inputText id="endereco"
+					value="#{clienteBean.endereco.logradouro}"  class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label for="bairro">Bairro *</label>
+				<h:inputText id="bairro" value="#{clienteBean.endereco.bairro}"
+					
+					class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label for="cidade">Cidade *</label>
+				<h:inputText id="cidade" value="#{clienteBean.endereco.cidade}"
+					
+					class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label for="estado">Estado *</label>
+				<h:inputText id="estado" value="#{clienteBean.endereco.estado}"
+					
+					class="form-control" />
+			</div>
+
+			<!-- Save or Update button -->
+			<div class="form-group text-center">
+				<h:commandButton value="Salvar"
+					action="#{clienteBean.saveOrUpdate()}" styleClass="btn btn-custom" />
+			</div>
+
+		</h:form>
+		<div class="form-group text-center">
+			<h:link outcome="listarClientes.xhtml" value="Ver Lista de Clientes"
+				styleClass="btn btn-link-custom" />
+		</div>
+	</div>
+</h:body>
+</html>

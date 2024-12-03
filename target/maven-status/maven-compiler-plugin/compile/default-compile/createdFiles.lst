@@ -1,0 +1,7 @@
+com\brenan\exemplo\service\ViaCepService.class
+com\brenan\exemplo\model\Cliente.class
+com\brenan\exemplo\dao\ClienteDao.class
+com\brenan\exemplo\bean\ClienteBean.class
+com\brenan\exemplo\model\Endereco.class
+com\brenan\exemplo\service\ClienteService.class
+com\brenan\exemplo\dao\LocalEntityManagerFactory.class
